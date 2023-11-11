@@ -95,7 +95,7 @@ const MyTransaction = () => {
   }
 
   return (
-    <div className="font-[Poppins] flex flex-col items-center justify-center   text-[#E4E4E4] md:pl-20 pl-4 bg-[#272726] min-h-[100vh] pr-4 md:pr-20 pt-14 pb-20">
+    <div className="font-[Poppins] flex flex-col items-center justify-center   text-[#E4E4E4] md:pl-20 pl-4 bg-[#272726] min-h-[100vh] pr-4 md:pr-20 pt-0   pb-20">
       {/* Display User's Unique QR Code */}
       {showCamera ? null : (
         <div className="user-qr-code">

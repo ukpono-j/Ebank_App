@@ -1,0 +1,6 @@
+.service_title{
+    background: linear-gradient(170deg, #FFFFFF 0%, #25C96F 61%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

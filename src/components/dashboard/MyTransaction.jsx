@@ -95,7 +95,7 @@ const MyTransaction = () => {
   }
 
   return (
-    <div className="font-[Poppins] flex flex-col items-center justify-center   text-[#E4E4E4] md:pl-20 pl-4 bg-[#272726] min-h-[100vh] pr-4 md:pr-20 pt-14 pb-10">
+    <div className="font-[Poppins] flex flex-col items-center justify-center   text-[#E4E4E4] md:pl-20 pl-4 bg-[#272726] min-h-[100vh] pr-4 md:pr-20 pt-14 pb-20">
       {/* Display User's Unique QR Code */}
       {showCamera ? null : (
         <div className="user-qr-code">
@@ -112,26 +112,27 @@ const MyTransaction = () => {
         <QrScanner
           onError={handleError}
           onScan={handleScan}
+          facingMode={facingMode}
           style={{ width: "100%" }}
         />
       )}
 
       {/* Scan and Cancel Buttons */}
-      <div className="scan-buttons">
+      <div className="scan-buttons flex items-center justify-center ">
         <button
           onClick={navigateToTransaction}
-          className="scan-button"
+          className="scan-button md:text-[16px] text-[12px]"
           disabled={isScanned}
         >
           Scan QR Code
         </button>
         {showCamera && (
-          <button onClick={cancelScan} className="cancel-button">
+          <button onClick={cancelScan} className="cancel-button md:text-[16px] text-[12px]">
             Cancel
           </button>
         )}
           {showCamera && (
-          <button onClick={toggleFacingMode} className="rotate-camera-button">
+          <button onClick={toggleFacingMode} className="rotate-camera-button md:text-[16px] text-[12px]">
             Rotate Camera
           </button>
         )}

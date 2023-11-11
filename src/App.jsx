@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import UserDashboard from "./pages/UserDashboard";
 import Register from "./pages/Register";
+import NewTransaction from "./components/dashboard/NewTransaction";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login"  element={<LogIn/>} />
           <Route path="/register"  element={<Register/>} />
           <Route path="/dashboard"  element={<UserDashboard/>} />
+          <Route path="/transaction"  element={<NewTransaction/>} />
          </Routes>
       {/* </Router> */}
   </>;

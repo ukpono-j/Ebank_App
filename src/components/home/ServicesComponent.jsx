@@ -9,7 +9,7 @@ const ServicesComponent = () => {
   return (
     <div className="h-[auto]    sm:pl-14  pl-5  pr-5  sm:pr-14  pt-20 pb-20 text-[#FEFEFF] font-[Poppins] w-[100%]">
       <div className="h-[auto]">
-        <div className="service_title m-auto sm:text-[46px] text-[40px] md:w-[600px] text-center font-[900] sm:leading-[60px] leading-[45px]">
+        <div className="service_title m-auto sm:text-[50px] text-[46px] md:max-w-[660px]  text-center font-[900] sm:leading-[60px] leading-[45px]">
           Why Choose SecureStream eBanking?
         </div>
         {/* === buyer */}

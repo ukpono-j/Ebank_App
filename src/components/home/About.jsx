@@ -40,7 +40,7 @@ const About = () => {
         }`}
       >
         {/* <h3 className="text-[16px]">Who We Are</h3> */}
-        <h1 className="font-bold  md:text-[60px] md:leading-[60px] leading-[50px]  text-[40px]  pt-1">
+        <h1 className="font-bold  md:text-[60px] md:leading-[60px] leading-[50px]  text-[44px]  pt-1">
            Discover the SecureStream Advantage
         </h1>
         <p className=" text-[14px] md:text-[15px] mt-7  leading-[22px]">

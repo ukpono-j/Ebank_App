@@ -37,7 +37,7 @@ const Navbar = () => {
         />
       </div>
       {isMenuOpen && (
-        <div className="md:hidden text-[13px]   fixed z-30 top-[72px] left-0 w-full h-full bg-[#0F1A2E] flex flex-col pl-5  pr-5  sm:pl-[60px] sm:pr-[60px] md:pl-[70px] md:pr-[70px]">
+        <div className="md:hidden text-[13px]   fixed z-30 top-[60px] left-0 w-full h-full bg-[#272726] flex flex-col pl-5  pr-5  sm:pl-[60px] sm:pr-[60px] md:pl-[70px] md:pr-[70px]">
           <Link to="" className="mt-4 mb-4">
             About Us
           </Link>

@@ -47,27 +47,28 @@ const BottomNav = () => {
   };
   
   const links = [
-    { to: "/create-transaction", label: "Create Transaction" },
-    { to: "/join-transaction", label: "Join Transaction" },
-    { to: "/transactions/tab", label: "My Transaction" },
-    { to: "/profile", label: "My Profile", icon: <PiWarningCircleBold className="text-[20px] text-[red]" /> },
+    { to: "/dashboard", label: "E-bank" },
+    // { to: "/create-transaction", label: "Create Transaction" },
+    // { to: "/join-transaction", label: "Join Transaction" },
+    // { to: "/transactions/tab", label: "My Transaction" },
+    // { to: "/profile", label: "My Profile", icon: <PiWarningCircleBold className="text-[20px] text-[red]" /> },
     // { to: "#", label: "LogOut", onClick: handleLogout },
   ];
 
   return (
-    <div className="w-[100%] sm:text-[14px] text-[12px] text-[#fff] font-[Poppins] flex items-center justify-center h-[60px] md:hidden bg-[#031420] fixed bottom-0">
+    <div className="w-[100%] sm:text-[14px] pl-3 pr-3  text-[12px] text-[#fff] font-[Poppins] flex items-center justify-between h-[60px] md:hidden bg-[#0C0C0C] fixed bottom-0">
       {links.map((link) => (
         <Link
           key={link.to}
           to={link.to}
-          className={`h-[40px] flex items-center ml-2 mr-2 ${location.pathname === link.to ? "text-[red]" : ""}`}
+          className={`h-[40px] flex items-center ml-2 ${location.pathname === link.to ? "text-[] text-[18px]" : ""}`}
         >
           {link.icon}
-          <span className={link.icon ? "pl-1" : ""}>{link.label}</span>
+          <span className={link.icon ? "" : ""}>{link.label}</span>
           
         </Link>
       ))}
-      <span onClick={handleLogout} className="flex items-center pl-2"><MdLogout className="pr-1  text-[18px]" /> Log Out</span>
+      <p onClick={handleLogout} className="flex items-center "><MdLogout className="pr-1  text-[24px]" /> <span className="text-[15px]">Log Out</span></p>
     </div>
   );
 };

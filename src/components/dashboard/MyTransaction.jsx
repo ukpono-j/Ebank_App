@@ -55,6 +55,8 @@ const MyTransaction = () => {
         .catch((error) => {
           console.error("Error fetching scanned user details:", error);
         });
+
+        navigateToTransaction();
     }
   };
 

@@ -35,26 +35,29 @@ const About = () => {
       }`}
     >
       <div
-        className={`md:w-[50%]   m-4 w-[100%] font-[Poppins] fade_right  h-[auto] ${
+        className={`md:w-[50%] md:text-start text-center   m-4 w-[100%] font-[Poppins] fade_right  h-[auto] ${
           isScrolling ? "slide-in-right" : "slide-out-right"
         }`}
       >
         {/* <h3 className="text-[16px]">Who We Are</h3> */}
-        <h1 className="font-bold  text-[60px] pt-1">
+        <h1 className="font-bold  md:text-[60px] md:leading-[60px] leading-[50px]  text-[40px]  pt-1">
            Discover the SecureStream Advantage
         </h1>
-        <p className=" text-[12px] mt-7  leading-[22px]">
+        <p className=" text-[14px] md:text-[15px] mt-7  leading-[22px]">
           Welcome to SecureStream E-Bank, where innovation meets security to
           redefine your banking experience. At SecureStream, we believe in
           providing a seamless and secure platform that empowers you to manage
           your finances with confidence.
         </p>
+        <div className="flex md:justify-start justify-center">
         <Link
           to="/register"
           className="mt-5 w-[200px]  flex items-center nav-btn  justify-center px-7 py-3  rounded-full text-[#fff] text-[14px] bg-[#1EA25B] border-2  border-[#1EA25B] login_btn  hover:border-2  hover:border-[#1EA25B]  hover:bg-[transparent]"
         >
           Get Started now
         </Link>
+        </div>
+
       </div>
       <div
         className={`sm:w-[48%]  flex items-center justify-between    fade_left  h-[auto] ${

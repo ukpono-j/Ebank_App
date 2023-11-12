@@ -1,37 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { MdLogout } from "react-icons/md";
-import { Link, useLocation,  useNavigate  } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-const BASE_URL = import.meta.env.VITE_BASE_URL ;
-
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Sidebar = () => {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(location.pathname);
   const toast = useToast(); // Initialize useToast hook
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
 
+  // UseEffect for create transaction
+  useEffect(() => {
+    const token = localStorage.getItem("auth-token");
+    if (token) {
+      axios.defaults.headers.common["auth-token"] = token;
+    }
 
-    // UseEffect for create transaction
-    useEffect(() => {
-      const token = localStorage.getItem("auth-token");
-      if (token) {
-        axios.defaults.headers.common["auth-token"] = token;
-      }
-  
-      // Fetch transaction details from API and update the state
-      axios
-        .get(`${BASE_URL}/user-details`, {
-          headers: {
-            "auth-token": token,
-          },
-        })
-        .then((response) => {
-          setUserName(response.data.firstName);
-        });
-    }, []);
+    // Fetch transaction details from API and update the state
+    axios
+      .get(`${BASE_URL}/user-details`, {
+        headers: {
+          "auth-token": token,
+        },
+      })
+      .then((response) => {
+        setUserName(response.data.firstName);
+      });
+  }, []);
 
   const links = [
     // { to: "/create-transaction", label: "Create Transaction" },
@@ -59,9 +57,11 @@ const Sidebar = () => {
   return (
     <div className="border text-[13px] fixed md:flex hidden md:flex-col left-0 top-0 pl-4 pr-4 pt-4  pb-10 border-black w-[100%] font-[Poppins] text-[#fff] bg-[#0C0C0C] min-h-[100vh]">
       <h1 className="text-[20px] font-bold">
-        <Link to="/dashboard">SecureStream </Link>
+        <Link to="/dashboard"> E-bank </Link>
       </h1>
-      <h3 className="mt-10">Welcome <span>{userName}</span></h3>
+      <h3 className="mt-10">
+        Welcome <span>{userName}</span>
+      </h3>
       <div className="flex pt-6 pb-6 items-center">
         <MdLogout className="text-[18px]" />
         <button className="ml-1" onClick={handleLogout}>
@@ -75,7 +75,9 @@ const Sidebar = () => {
             to={link.to}
             onClick={() => handleLinkClick(link.to)}
             className={`dash_links flex mt-2 mb-2 pl-4 pr-3 pb-3 pt-3 cursor-pointer ${
-              activeLink === link.to ? "text-[#fff] rounded-3xl bg-[#81712E] mb-3 text-[#000]" : ""
+              activeLink === link.to
+                ? "text-[#fff] rounded-3xl bg-[#81712E] mb-3 text-[#000]"
+                : ""
             }`}
           >
             {link.label}

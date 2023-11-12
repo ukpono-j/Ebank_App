@@ -7,13 +7,13 @@ import "./ServicesComponent.css";
 
 const ServicesComponent = () => {
   return (
-    <div className="h-[auto]    md:pl-20 pl-5  pr-5  md:pr-20 pt-20 pb-20 text-[#FEFEFF] font-[Poppins] w-[100%]">
+    <div className="h-[auto]    sm:pl-14  pl-5  pr-5  sm:pr-14  pt-20 pb-20 text-[#FEFEFF] font-[Poppins] w-[100%]">
       <div className="h-[auto]">
         <div className="service_title m-auto sm:text-[46px] text-[35px] md:w-[600px] text-center font-[900] sm:leading-[60px] leading-[45px]">
           Why Choose SecureStream eBanking?
         </div>
         {/* === buyer */}
-        <div className="md:w-[80%]   h-[auto] sm:mt-16 mt-14  md:flex items-center justify-between  mb-6 ml-auto mr-auto">
+        <div className="sm:w-[90%] md:w-[80%]   h-[auto] sm:mt-16 mt-14  md:flex items-center justify-between  mb-6 ml-auto mr-auto">
           <div className=" md:w-[380px] h-[auto] flex flex-col md:items-start items-center md:text-start text-center">
             <h1 className="font-bold text-[34px]">Secure and Reliable</h1>
             <p className="text-[15px] mt-2 ">
@@ -33,8 +33,8 @@ const ServicesComponent = () => {
           </div>
         </div>
         {/* ========== Seller */}
-        <div className="md:w-[80%]  h-[auto] mt-16    flex md:flex-row  flex-col-reverse items-center justify-between  mb-6 ml-auto mr-auto">
-          <div className="rounded-3xl flex  justify-center   md:mt-0 mt-9  moving  md:w-[540px] h-[auto] ">
+        <div className="sm:w-[90%] md:w-[80%]  h-[auto] mt-20    flex md:flex-row  flex-col-reverse items-center justify-between  mb-6 ml-auto mr-auto">
+          <div className="rounded-3xl flex  justify-center   md:mt-0 mt-14  moving  md:w-[540px] h-[auto] ">
             <img src={Girl} alt="" className="w-[90%]" />
           </div>
           <div className=" md:w-[380px] h-[auto] flex flex-col md:items-start items-center md:text-start text-center">
@@ -53,7 +53,7 @@ const ServicesComponent = () => {
           </div>
         </div>
         {/* ======== Fraud Protection */}
-        <div className="md:w-[80%]  h-[auto] mt-20   md:flex items-center justify-between  mb-6 ml-auto mr-auto">
+        <div className="sm:w-[90%] md:w-[80%]  h-[auto] mt-20   md:flex items-center justify-between  mb-6 ml-auto mr-auto">
           <div className=" md:w-[300px] h-[auto] flex flex-col md:items-start items-center md:text-start text-center">
             <h1 className="font-bold text-[34px]">
               Convenience at Your Fingertips

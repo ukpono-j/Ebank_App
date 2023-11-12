@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="pl-5 font-[Poppins] fixed  z-30  pr-5  md:pl-[60px] md:pr-[60px] left-0   top-0 pt-4  pb-4  w-full bg-[#272726] text-white flex justify-between items-center">
       <div className="font-bold cursor-pointer  md:text-2xl text-2xl uppercase">
         <Link to="/" className="outline-none">
-          SecureStream
+          E-bank
         </Link>
         {/* 5B51FE */}
       </div>

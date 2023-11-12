@@ -12,31 +12,33 @@ const Hero = () => {
       className="
      hero text-center md:text-start   md:flex items-center justify-between  md:pl-14  pl-5  pr-5  md:pr-14  md:pt-[120px] pt-[150px] pb-[120px]   h-[auto] text-[#FFF] w-[100%]"
     >
-      <div className="md:w-[60%]  w-[100%]   h-[auto] pr-10 ">
+      <div className="md:w-[60%]   w-[100%]   h-[auto] ">
         {/* <h1>Transforming Transactions, Building Trust</h1> */}
         {/* <h3 className="md:text-[16px] text-[14px]">
           Empower Your Transactions
         </h3> */}
-        <h1 className="md:text-[46px] uppercase  leading-[57px]  text-[56px] ">
+        <h1 className="md:text-[46px] uppercase  md:leading-[57px] leading-[43px]  text-[40px] ">
           {" "}
           {/* A New Era of Trust and Transparency */}
           {/* Welcome to SecureStream eBanking */}
           The Only Professionals & Secure Digital Bank
         </h1>
         
-        <p className="ss">
+        <p className="ss md:text-[15px] text-[14px]">
           At SecureStream ebank, we believe in simplifying your banking
           experience. With our advanced e-banking services, managing your
           finances has never been easier. Our secure and user-friendly online
           platform allows you to access your accounts, make transactions, and
           stay in control of your finances anytime, anywhere.
         </p>
+        <div className="flex md:justify-start justify-center">
         <Link
               to="/login"
               className="mt-6  font-[Poppins] w-[230px]   flex items-center nav-btn  justify-center px-7 py-3  rounded-full text-[#fff] text-[14px] bg-[#1EA25B] border-2  border-[#1EA25B] login_btn  hover:border-2  hover:border-[#1EA25B]  hover:bg-[transparent]"
             >
               Get Started now
             </Link>
+        </div>
       </div>
       <div className="md:w-[50%] font-[Poppins] w-[100%]  mt-7  md:mt-0 relative  flex  h-[auto]">
         <div className="bounce rounded-xl  absolute w-[200px] h-[70px] flex items-center justify-center  bg-[#fff] m-auto z-10 top-[50%] left-[34%]">

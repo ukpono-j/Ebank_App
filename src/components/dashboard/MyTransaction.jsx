@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import QrScanner from "react-qr-scanner";
 import QRCode from "qrcode.react";
+import Qr_code from "../../assets/qr-code.png"
 import "./myTransaction.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -106,12 +107,13 @@ const MyTransaction = () => {
   return (
     <div className="font-[Poppins] flex flex-col items-center justify-center text-[#E4E4E4] md:pl-20 pl-4 bg-[#272726] min-h-[100vh] pr-4 md:pr-20 pt-0 pb-20">
       {showCamera ? null : (
-        <div className="user-qr-code">
-          <QRCode
+        <div className="user-qr-code border rounded-3xl  max-w-[400px]">
+          {/* <QRCode
             value={userId}
             size={calculateQRCodeSize()}
             className="rounded-3xl"
-          />
+          /> */}
+         <img src={Qr_code}  alt="" className="rounded-3xl" />
         </div>
       )}
 
@@ -120,7 +122,8 @@ const MyTransaction = () => {
           ref={qrScannerRef}
           onError={handleError}
           onScan={handleScan}
-          style={{ width: "100%" }}
+          // style={{ width: "100%" }}
+          className="max-w-[500px] rounded-3xl"
         />
       )}
 

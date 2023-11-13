@@ -1,11 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import QrScanner from "react-qr-scanner";
 import QRCode from "qrcode.react";
-import Qr_code from "../../assets/qr-code.png"
+import Profile from "../../assets/look.jpg";
 import "./myTransaction.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CustomQrScanner from "./CustomQrScanner";
+import {
+  MdAdfScanner,
+  MdArrowDropDown,
+  MdArrowDropUp,
+  MdArrowForward,
+  MdDocumentScanner,
+  MdForward,
+  MdHeadphones,
+  MdMore,
+  MdNotifications,
+  MdRemoveDone,
+  MdSend,
+} from "react-icons/md";
+import {
+  PiCurrencyNgnDuotone,
+  PiEyeFill,
+  PiPlus,
+  PiPlusCircle,
+} from "react-icons/pi";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const MyTransaction = () => {
@@ -13,11 +32,9 @@ const MyTransaction = () => {
   const [showCamera, setShowCamera] = useState(false);
   const [isScanned, setIsScanned] = useState(false);
   const navigate = useNavigate();
-  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState(null);
   const qrScannerRef = useRef(null);
   const [hasRearCamera, setHasRearCamera] = useState(true);
-
-
 
   useEffect(() => {
     const token = localStorage.getItem("auth-token");
@@ -33,155 +50,95 @@ const MyTransaction = () => {
         },
       })
       .then((response) => {
-        setUserId(response.data);
+        setUser(response.data);
       });
   }, []);
 
-  const handleError = (err) => {
-    console.error(err);
-  };
-
-  const handleScan = (data) => {
-    if (data) {
-      setResult(data);
-      setIsScanned(true);
-      setShowCamera(false);
-
-      // Fetch scanned user details and store in state
-      axios
-        .get(`${BASE_URL}/user-details/${data}`)
-        .then((response) => {
-          setScannedUserData(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching scanned user details:", error);
-        });
-
-        navigateToTransaction();
-    }
-  };
-
-  const navigateToTransaction = () => {
-    if (result) {
-      const userId = result;
-      navigate(`/transaction/${userId}`);
-    }
-
-    setShowCamera(true);
-    setIsScanned(false);
-  };
-
-  const cancelScan = () => {
-    setShowCamera(false);
-    setIsScanned(false);
-    setResult(null);
-  };
-
-  const toggleCamera = () => {
-    setShowCamera(false);
-    setIsScanned(false);
-    setResult(null);
-    // Resetting the CustomQrScanner component
-    // qrScannerRef.current.instance.reset();
-    qrScannerRef.current?.toggleCamera();
-    setShowCamera(true);
-    console.log("toggle clicked")
-  };
-
-  const calculateQRCodeSize = () => {
-    const containerWidth = window.innerWidth;
-    const percentage = calculatePercentageBasedOnScreenWidth();
-    const size = (containerWidth * percentage) / 100;
-
-    return Math.min(Math.max(size, 100), 400);
-  };
-
-  const calculatePercentageBasedOnScreenWidth = () => {
-    if (window.innerWidth >= 768) {
-      return 80;
-    } else {
-      return 56;
-    }
-  };
-
   return (
-    <div className="font-[Poppins] flex flex-col items-center justify-center text-[#E4E4E4] md:pl-20 pl-4 bg-[#272726] min-h-[100vh] pr-4 md:pr-20 pt-0 pb-20">
-      {showCamera ? null : (
-        <div className="user-qr-code border rounded-3xl  max-w-[400px]">
-          {/* <QRCode
-            value={userId}
-            size={calculateQRCodeSize()}
-            className="rounded-3xl"
-          /> */}
-         <img src={Qr_code}  alt="" className="rounded-3xl" />
+    <div className="font-[Poppins]  text-[#E4E4E4] md:pl-7 sm:pl-4 pl-2 pr-2  bg-[#272726] min-h-[100vh] sm:pr-4 md:pr-7 pt-10 pb-20">
+      {user && (
+        <>
+          <div className="flex items-center  justify-between">
+            <div className="flex items-center ">
+              <div className="flex justify-center  items-center sm:w-[70px] w-[40px] h-[40px] sm:h-[70px] rounded-full">
+                <img
+                  src={Profile}
+                  alt="profile_img"
+                  className="w-[100%]  rounded-full"
+                />
+              </div>
+              <div className="pl-3">
+                <h1 className="sm:text-[18px] text-[15px]">
+                  Hi, {user.firstName}
+                </h1>
+                {/* Display other user details as needed */}
+                <p className="sm:text-[14px] text-[10px]"> {user.email}</p>
+              </div>
+            </div>
+            <div className="flex items-center">
+              <div className="sm:m-3 m-2  sm:text-[26px] text-[23px]">
+                <MdHeadphones />
+              </div>
+              <div className="sm:m-3 m-2  sm:text-[26px] text-[23px]">
+                <MdDocumentScanner />
+              </div>
+              <div className="sm:m-3 m-2  sm:text-[26px] text-[23px]">
+                <MdNotifications />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      <div className="rounded-2xl h-[auto] bg-[#0C0C0C] pl-4  pt-3  pr-4  pb-5  mt-7">
+        <div className="flex items-center justify-between">
+          <h2 className="flex items-center text-[13px]">
+            Available Balance{" "}
+            <span className="pl-2">
+              <PiEyeFill className="text-[20px]" />
+            </span>{" "}
+          </h2>
+          <h2 className="flex items-center text-[13px]">
+            Transaction History{" "}
+            <span className="pl-1">
+              <MdForward />
+            </span>{" "}
+          </h2>
         </div>
-      )}
-
-      {showCamera && (
-        <CustomQrScanner
-          ref={qrScannerRef}
-          onError={handleError}
-          onScan={handleScan}
-          // style={{ width: "100%" }}
-          className="max-w-[500px] rounded-3xl"
-        />
-      )}
-
-      <div className="scan-buttons flex items-center justify-center ">
-        <button
-          onClick={navigateToTransaction}
-          className="scan-button md:text-[16px] text-[12px]"
-          disabled={isScanned}
-        >
-          Scan QR Code
-        </button>
-        {showCamera && (
-          <button
-            onClick={cancelScan}
-            className="cancel-button md:text-[16px] text-[12px]"
-          >
-            Cancel
-          </button>
-        )}
-        {/* {showCamera && (
-          <button
-            onClick={toggleCamera}
-            className="rotate-camera-button md:text-[16px] text-[12px]"
-          >
-            Toggle Camera
-          </button>
-        )} */}
-         {showCamera && (
-        <button
-          onClick={toggleCamera}
-          className="rotate-camera-button md:text-[16px] text-[12px]"
-          disabled={!hasRearCamera} // Disable the button if no rear camera is available
-        >
-          Toggle Camera
-        </button>
-      )}
+        <div className="mt-2">
+          <h1 className="flex items-center text-[26px]">
+            <span>
+              <PiCurrencyNgnDuotone />
+            </span>{" "}
+            1000
+          </h1>
+        </div>
+        <div className="mt-2 text-[12px]">
+          <p>$ Cashback ***</p>
+        </div>
+        <div className="flex items-center justify-between md:pl-20 pl-3 pr-3 md:pr-20 mt-4">
+          <div className="flex cursor-pointer  items-center flex-col justify-center  items-center ">
+            <div className="h-[40px] bg-[#ffff]  w-[40px] rounded-xl flex items-center justify-center ">
+              <PiPlusCircle className="text-[#0C0C0C] text-[20px]" />
+            </div>
+            <h4 className="pt-1 text-[14px]">Add money</h4>
+          </div>
+          <div className="flex cursor-pointer  items-center flex-col justify-center items-center ">
+            <div className="h-[40px] bg-[#ffff]  w-[40px] rounded-xl flex items-center justify-center ">
+              <MdSend className="text-[#0C0C0C] text-[18px]" />
+            </div>
+            <h4 className="pt-1 text-[14px]">Transfer</h4>
+          </div>
+          <div className="flex cursor-pointer  items-center flex-col justify-center items-center ">
+            <div className="h-[40px] bg-[#ffff]  w-[40px] rounded-xl flex items-center justify-center ">
+              <MdArrowDropDown className="text-[#0C0C0C] text-[58px]" />
+            </div>
+            <h4 className="pt-1 text-[14px]">Withdraw</h4>
+          </div>
+        </div>
       </div>
 
-      {/* {result && (
-        <div className="qr-code-data">
-          <h3>QR Code Data:</h3>
-          <p>{result}</p>
-        </div>
-      )} */}
-      {result && (
-        <div className="qr-code-data">
-          <h3>QR Code Data:</h3>
-          <p>{result}</p>
-          {scannedUserData && (
-            <div>
-              <h3>Scanned User Data:</h3>
-              <p>{/* Display relevant scanned user data here */}</p>
-              {/* Link to the transaction page */}
-              <Link to={`/transaction/${result}`}>Go to Transaction Page</Link>
-            </div>
-          )}
-        </div>
-      )}
+   
     </div>
   );
 };
